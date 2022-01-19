@@ -137,4 +137,5 @@ float
 ```
 
 The idea of this library was to create something very simple on c++, to use for parsing JSON file or string.
+
 **Works only with valid JSON format** 
