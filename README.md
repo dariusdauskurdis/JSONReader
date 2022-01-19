@@ -1,5 +1,5 @@
 # JSONReader
-JSON data parser, which converts JSON string/file to map of objects
+Very simple JSON data parser, which converts JSON string/file to map of objects.
 # Compile and run executable file
 Open console, go to project directory, compile selected files and run executable file "converter":
 
@@ -135,3 +135,5 @@ Reading JSON data from string
 2
 float
 ```
+
+The idea of this library was to create something very simple on c++, to use for parsing JSON file or string. **Works only with valid JSON format** 
