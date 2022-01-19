@@ -53,7 +53,6 @@ using namespace std;
 
 int main()
 {
-	
 	std::cout << "*** TEST 1 ***\n";
 	std::cout << "Reading JSON data from file\n";
 
@@ -72,8 +71,8 @@ int main()
 	}
 
 	std::cout << json_data_1["array of objects"]->childs["1"]->childs["status"]->type << "\n";
-	
-    return 1;
+
+	return 1;
 }
 
 ```
@@ -94,7 +93,9 @@ empty
 
 If need to use JSON data as string, need to minimize JSON data structure in one line, escape double quotes. 
 
-###### {\"random\":87,\"random float\":43.257,\"bool\":true,\"empty\":null,\"name\":\"Stacey Eugenia\",\"country\":\"Lithuania\",\"text with quotes\":\"John said, \\\"I really happy when it’s hot outside.\\\"\",\"array of names\":[\"Meg\",\"Danika\",\"Kore\"],\"array of objects\":[{\"bool\":false,\"random float\":25.768},{\"random\":28,\"status\":null}],\"extra\":{\"age\":35}}
+```bash 
+{\"random\":87,\"random float\":43.257,\"bool\":true,\"empty\":null,\"name\":\"Stacey Eugenia\",\"country\":\"Lithuania\",\"text with quotes\":\"John said, \\\"I really happy when it’s hot outside.\\\"\",\"array of names\":[\"Meg\",\"Danika\",\"Kore\"],\"array of objects\":[{\"bool\":false,\"random float\":25.768},{\"random\":28,\"status\":null}],\"extra\":{\"age\":35}}
+```
 
 
 Second test: to parse JSON string
@@ -108,7 +109,6 @@ using namespace std;
 
 int main()
 {
-	
 	std::cout << "\n*** TEST 2 ***\n";
 	std::cout << "Reading JSON data from string\n";
 
@@ -119,8 +119,8 @@ int main()
 	std::cout << json_data_2["bool"]->value << "\n";
 	std::cout << json_data_2["array of objects"]->childs.size() << "\n";
 	std::cout << json_data_2["array of objects"]->childs["0"]->childs["random float"]->type << "\n";
-	
-    return 1;
+
+	return 1;
 }
 
 ```
