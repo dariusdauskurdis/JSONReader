@@ -42,6 +42,9 @@ JSON file "test.json" structure:
 }
 ```
 
+First test: to parse JSON file data
+
+
 ```cpp
 #include <iostream>
 using namespace std;
@@ -77,6 +80,7 @@ int main()
 
 Result:
 
+
 ```bash
 *** TEST 1 ***
 Reading JSON data from file
@@ -91,6 +95,9 @@ empty
 If need to use JSON data as string, need to minimize JSON data structure in one line, escape double quotes. 
 
 ###### {\"random\":87,\"random float\":43.257,\"bool\":true,\"empty\":null,\"name\":\"Stacey Eugenia\",\"country\":\"Lithuania\",\"text with quotes\":\"John said, \\\"I really happy when it’s hot outside.\\\"\",\"array of names\":[\"Meg\",\"Danika\",\"Kore\"],\"array of objects\":[{\"bool\":false,\"random float\":25.768},{\"random\":28,\"status\":null}],\"extra\":{\"age\":35}}"
+
+
+Second test: to parse JSON string
 
 
 ```cpp
@@ -117,7 +124,9 @@ int main()
 }
 
 ```
+
 Result:
+
 
 ```bash
 *** TEST 2 ***
