@@ -1,5 +1,5 @@
 /**
-    Copyright (c) 2022 Darius Dauskurdis
+    Copyright (c) 2022 Darius Dauskurdis darius.dauskurdis@gmail.com
 	
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +22,8 @@
 
 /**
     JSON data parser, which converts JSON string/file to map of objects
-    @file JSONReader.cpp
-    @author Darius Dauskurdis
+    @file JSONReader.h
+    @author Darius Dauskurdis darius.dauskurdis@gmail.com
     @version 1.1 19/01/2022
 */
 
