@@ -176,9 +176,9 @@ Key: empty, value: null, type: empty
 Key: name, value: Stacey Eugenia, type: string
 Key: country, value: Lithuania, type: string
 Key: text with quotes, value: John said, \"I really happy when it’s hot outside.\", type: string
-Key: array of names, value: array_1, type: array
-Key: array of objects, value: array_2, type: array
-Key: extra, value: object_3, type: object
+Key: array of names, value: , type: array
+Key: array of objects, value: , type: array
+Key: extra, value: , type: object
 ```
 
 Notice that childs are maps, and maps have auto sorting by key, but if need to loop by inserted order need to use class member "childs_order"
