@@ -37,7 +37,7 @@
  * @return map of JSONNode objects.
  */
 
-std::map<std::string, JSONReader :: JSONNode*> JSONReader :: loadFromFile(std::string url){
+JSONReader :: JSONNode* JSONReader:: loadFromFile(std::string url){
 	json_file.open(url); // Open file from url
 	JSONNode *json_node = new JSONNode; // Created JSONNode class object
   	if (json_file.is_open()){ // If JSON file opened successfully, start reading
@@ -45,7 +45,7 @@ std::map<std::string, JSONReader :: JSONNode*> JSONReader :: loadFromFile(std::s
 		json_node = JSONReader :: parseObjectOrArray(); // Call parsing method 
 		json_file.close(); // Close file after reading
   	}
-	return json_node->childs;
+	return json_node;
 }	
 
 
@@ -56,13 +56,13 @@ std::map<std::string, JSONReader :: JSONNode*> JSONReader :: loadFromFile(std::s
  * @return map of JSONNode objects.
  */
 
-std::map<std::string, JSONReader :: JSONNode*> JSONReader :: load(std::string str){
+JSONReader :: JSONNode* JSONReader :: load(std::string str){
 	json_from_file = 0; // Notice that data will be read from string and not from file
 	current_character_index = -1; // Added default index value before reading JSON string
 	json_text = str; // assigning JSON string to global variable
 	JSONNode *json_node = new JSONNode; // Created JSONNode class object
 	json_node = JSONReader :: parseObjectOrArray(); // Call parsing method 
-	return json_node->childs;
+	return json_node;
 }
 
 
@@ -164,6 +164,7 @@ JSONReader :: JSONNode * JSONReader :: parseJSONString(std::string type, std::st
 	    for(int i = 0; i < objects_values_strings_list.size(); i++){
 	    	JSONNode *json_node = JSONReader :: parseJSONObjectAndValue(objects_values_strings_list[i]); // send key:value items to parse 
 	    	parent_json_node->childs[json_node->key] = json_node;
+	    	parent_json_node->childs_order.push_back(json_node->key); 
 	    }
 	}
 	return parent_json_node;
