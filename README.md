@@ -136,7 +136,7 @@ Reading JSON data from string
 float
 ```
 
-Third test: loop json object by inserted order
+Third test: loop json objects by inserted order
 
 ```cpp
 #include <iostream>
