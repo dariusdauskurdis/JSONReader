@@ -183,6 +183,6 @@ Key: extra, value: object_3, type: object
 
 Notice that childs are maps, and maps have auto sorting by key, but if need to loop by inserted order need to use class member "childs_order"
 
-The idea of this library was to create something very simple on c++, to use for parsing JSON file or string.
+The idea of this library was to create something very simple on c++, only few functions, to use for parsing JSON file or string.
 
 **Works only with valid JSON format** 
