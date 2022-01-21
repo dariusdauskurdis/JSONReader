@@ -217,7 +217,10 @@ JSONReader :: JSONNode *JSONReader :: parseJSONObjectAndValue(std::string str){
 	json_node->value = value;
 	if(type == "object" || type == "array"){ // if type is object or array, need to find item in temporary data by key and replace
 		std::map<std::string, JSONNode*> ::iterator it;
-		json_node->childs = temp_data[value]->childs;
+		for (it = temp_data[value]->childs.begin(); it != temp_data[value]->childs.end(); it++){
+			json_node->childs[it->first] = it->second;
+			json_node->childs_order.push_back(it->first); 
+		}
 		it = temp_data.find (value); // Find json object/array in temp_data map
 		temp_data.erase (it); // and remove it
 		json_node->value = "";
