@@ -47,8 +47,6 @@ class JSONReader
 				std::map<std::string, JSONNode*> childs;
 				std::vector<std::string> childs_order;
 		};
-		/*std::map<std::string, JSONNode*> loadFromFile(std::string url);
-		std::map<std::string, JSONNode*> load(std::string str);*/
 		JSONNode *loadFromFile(std::string url);
 		JSONNode *load(std::string str);
 	private:
