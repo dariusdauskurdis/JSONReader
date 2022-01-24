@@ -21,7 +21,7 @@
 */
 
 /**
-    JSON data parser, which converts JSON string/file to map of JSONNode objects
+    JSON data parser, which converts JSON string/file to unordered_map of JSONNode objects
     @file JSONReader.cpp
     @author Darius Dauskurdis darius.dauskurdis@gmail.com
     @version 1.1 19/01/2022
@@ -84,13 +84,13 @@ JSONReader :: JSONNode * JSONReader :: parseObjectOrArray(){
 		}
 		if(current_character != '\n' && (current_character != ' ' || string_started == 1)){ // Skip new line character and space character if string is bewteen "..."
 			std::string character_string(1, current_character); // char convert to string
-			if(current_character == '{' || current_character == '['){
+			if((current_character == '{' || current_character == '[') && string_started == 0){
 				if(parsing_started == 0){
 					parsing_started = 1;
-					if(current_character == '{'){ // If current character is {, it means we will start parsing object
+					if(current_character == '{' && string_started == 0){ // If current character is {, it means we will start parsing object
 						type = "object";
 						finish_character = '}'; // end of the json object string must finish with character }
-					}else{ // else if current character is [, it means we will start parsing array
+					}else if(current_character == '[' && string_started == 0){ // else if current character is [, it means we will start parsing array
 						type = "array";
 						finish_character = ']'; // end of the json array string must finish with character ]
 						parsing_string.append("0:"); // adding default key for the first array item
@@ -113,7 +113,7 @@ JSONReader :: JSONNode * JSONReader :: parseObjectOrArray(){
 					temp_data[temp_data_index] = temp_json_node; // put data in temporary map
 					parsing_string.append(temp_data_index);
 				}
-			}else if(current_character == finish_character){
+			}else if(current_character == finish_character && string_started == 0){
 				parsing_started = 0;
 				parsing_finished = 1;
 			}else{
@@ -216,7 +216,7 @@ JSONReader :: JSONNode *JSONReader :: parseJSONObjectAndValue(std::string str){
 	json_node->type = type;
 	json_node->value = value;
 	if(type == "object" || type == "array"){ // if type is object or array, need to find item in temporary data by key and replace
-		std::map<std::string, JSONNode*> ::iterator it;
+		std::unordered_map<std::string, JSONNode*> ::iterator it;
 		for(int i = 0; i < temp_data[value]->childs_order.size(); i++){
 			json_node->childs[temp_data[value]->childs_order[i]] = temp_data[value]->childs[temp_data[value]->childs_order[i]];
 			json_node->childs_order.push_back(temp_data[value]->childs_order[i]); 

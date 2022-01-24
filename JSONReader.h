@@ -21,7 +21,7 @@
 */
 
 /**
-    JSON data parser, which converts JSON string/file to map of objects
+    JSON data parser, which converts JSON string/file to unordered_map of objects
     @file JSONReader.h
     @author Darius Dauskurdis darius.dauskurdis@gmail.com
     @version 1.1 19/01/2022
@@ -31,7 +31,7 @@
 #define JSONREADER_H
 #pragma once
 #include <fstream>
-#include <map>
+#include <unordered_map>
 #include <vector>
 #include <sstream>
 #include <string>
@@ -44,7 +44,7 @@ class JSONReader
 				std::string key;
 				std::string value;
 				std::string type;
-				std::map<std::string, JSONNode*> childs;
+				std::unordered_map<std::string, JSONNode*> childs;
 				std::vector<std::string> childs_order;
 		};
 		JSONNode *loadFromFile(std::string url);
@@ -63,7 +63,7 @@ class JSONReader
 		JSONNode *parseObjectOrArray();
 		JSONNode *parseJSONString(std::string type, std::string str);
 		JSONNode *parseJSONObjectAndValue(std::string str);
-		std::map<std::string, JSONNode*> temp_data;
+		std::unordered_map<std::string, JSONNode*> temp_data;
 };
  
 #endif

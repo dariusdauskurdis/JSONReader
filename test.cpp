@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <unordered_map>
 using namespace std;
 
 #include "JSONReader.h"
@@ -17,8 +18,8 @@ int main(){
 
 	std::cout << json_data_1->childs["text with quotes"]->value << "\n";
 
-	std::map<std::string, JSONReader :: JSONNode*> list_of_items = json_data_1->childs["array of names"]->childs;
-	std::map<std::string, JSONReader :: JSONNode*> ::iterator it;
+	std::unordered_map<std::string, JSONReader :: JSONNode*> list_of_items = json_data_1->childs["array of names"]->childs;
+	std::unordered_map<std::string, JSONReader :: JSONNode*> ::iterator it;
 	for (it = list_of_items.begin(); it != list_of_items.end(); it++){
 	    std::cout << "Key: " << it->first << ", value: " << it->second->value << ", type: " << it->second->type << "\n";
 	}
