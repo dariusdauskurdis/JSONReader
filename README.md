@@ -47,6 +47,8 @@ First test: to parse JSON file data
 
 ```cpp
 #include <iostream>
+#include <string>
+#include <unordered_map>
 using namespace std;
 
 #include "JSONReader.h"
@@ -64,8 +66,8 @@ int main()
 
 	std::cout << json_data_1->childs["text with quotes"]->value << "\n";
 
-	std::map<std::string, JSONReader :: JSONNode*> list_of_items = json_data_1->childs["array of names"]->childs;
-	std::map<std::string, JSONReader :: JSONNode*> ::iterator it;
+	std::unordered_map<std::string, JSONReader :: JSONNode*> list_of_items = json_data_1->childs["array of names"]->childs;
+	std::unordered_map<std::string, JSONReader :: JSONNode*> ::iterator it;
 	for (it = list_of_items.begin(); it != list_of_items.end(); it++){
 	    std::cout << "Key: " << it->first << ", value: " << it->second->value << ", type: " << it->second->type << "\n";
 	}
@@ -103,6 +105,8 @@ Second test: to parse JSON string
 
 ```cpp
 #include <iostream>
+#include <string>
+#include <unordered_map>
 using namespace std;
 
 #include "JSONReader.h"
@@ -114,7 +118,7 @@ int main()
 
 	JSONReader *json_reader_2 = new JSONReader;
 	std::string json_string = "{\"random\":87,\"random float\":43.257,\"bool\":true,\"empty\":null,\"name\":\"Stacey Eugenia\",\"country\":\"Lithuania\",\"text with quotes\":\"John said, \\\"I really happy when it’s hot outside.\\\"\",\"array of names\":[\"Meg\",\"Danika\",\"Kore\"],\"array of objects\":[{\"bool\":false,\"random float\":25.768},{\"random\":28,\"status\":null}],\"extra\":{\"age\":35}}";
-	std::map<std::string, JSONReader :: JSONNode*> json_data_2 = json_reader_2->load(json_string);
+	std::unordered_map<std::string, JSONReader :: JSONNode*> json_data_2 = json_reader_2->load(json_string);
 
 	std::cout << json_data_2->childs["bool"]->value << "\n";
 	std::cout << json_data_2->childs["array of objects"]->childs.size() << "\n";
@@ -140,6 +144,8 @@ Third test: loop json objects by inserted order
 
 ```cpp
 #include <iostream>
+#include <string>
+#include <unordered_map>
 using namespace std;
 
 #include "JSONReader.h"
@@ -151,7 +157,7 @@ int main()
 
 	JSONReader *json_reader_2 = new JSONReader;
 	std::string json_string = "{\"random\":87,\"random float\":43.257,\"bool\":true,\"empty\":null,\"name\":\"Stacey Eugenia\",\"country\":\"Lithuania\",\"text with quotes\":\"John said, \\\"I really happy when it’s hot outside.\\\"\",\"array of names\":[\"Meg\",\"Danika\",\"Kore\"],\"array of objects\":[{\"bool\":false,\"random float\":25.768},{\"random\":28,\"status\":null}],\"extra\":{\"age\":35}}";
-	std::map<std::string, JSONReader :: JSONNode*> json_data_2 = json_reader_2->load(json_string);
+	std::unordered_map<std::string, JSONReader :: JSONNode*> json_data_2 = json_reader_2->load(json_string);
 
 	for (int i = 0; i < json_data_2->childs_order.size(); ++i){
 		std::string child_key = json_data_2->childs_order[i];
@@ -181,7 +187,7 @@ Key: array of objects, value: , type: array
 Key: extra, value: , type: object
 ```
 
-Notice that childs are maps, and maps have auto sorting by key, but if need to loop by inserted order need to use class member "childs_order"
+Notice that childs are unordered_map, and unordered_map have own sorting, but if need to loop by inserted order need to use class member "childs_order"
 
 The idea of this library was to create something very simple on c++, only few functions, to use for parsing JSON file or string.
 
